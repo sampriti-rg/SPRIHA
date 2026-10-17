@@ -39,3 +39,14 @@ profiling_results/*.prof
 # Temporary files
 *.tmp
 *.log
+# Large Data Files (> 100MB - GitHub file size limit)
+training/data/collected_*.csv
+training/data/Archive-*/*.csv
+data/collected_*.csv
+
+# Checkpoints (can be large)
+checkpoints/*.pt
+
+# Results and outputs (can accumulate large files)
+results/*.csv
+results/*.pkl
