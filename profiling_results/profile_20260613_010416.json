@@ -1,0 +1,67 @@
+{
+  "timestamp": "20260613_010416",
+  "summary": {
+    "total_time_s": 2.8694086000032257,
+    "avg_episode_time_s": 2.8694086000032257,
+    "gpu_available": false
+  },
+  "timing_stats": {
+    "request_generation": {
+      "count": 1,
+      "total_ms": 99.4563999993261,
+      "mean_ms": 99.4563999993261,
+      "min_ms": 99.4563999993261,
+      "max_ms": 99.4563999993261
+    },
+    "total_routing": {
+      "count": 1,
+      "total_ms": 90.47200004715705,
+      "mean_ms": 90.47200004715705,
+      "min_ms": 90.47200004715705,
+      "max_ms": 90.47200004715705
+    },
+    "total_provisioning": {
+      "count": 1,
+      "total_ms": 2670.311700028833,
+      "mean_ms": 2670.311700028833,
+      "min_ms": 2670.311700028833,
+      "max_ms": 2670.311700028833
+    },
+    "avg_routing_per_request": {
+      "count": 1,
+      "total_ms": 0.01809440000943141,
+      "mean_ms": 0.01809440000943141,
+      "min_ms": 0.01809440000943141,
+      "max_ms": 0.01809440000943141
+    },
+    "avg_provisioning_call": {
+      "count": 1,
+      "total_ms": 53.40623400057666,
+      "mean_ms": 53.40623400057666,
+      "min_ms": 53.40623400057666,
+      "max_ms": 53.40623400057666
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "component": "Provisioning (DDQN)",
+      "issue": "Takes 2.67s total",
+      "solutions": [
+        "1. Use agent.select_actions_batch() for vectorized action selection",
+        "2. Increase PROVISIONING_INTERVAL to reduce frequency",
+        "3. Reduce state vector computation overhead"
+      ]
+    },
+    {
+      "priority": "CRITICAL",
+      "component": "GPU Acceleration",
+      "issue": "GPU not available - training on CPU",
+      "solutions": [
+        "1. Install CUDA-enabled PyTorch for 6-8x speedup",
+        "2. Run: pip install torch --index-url https://pytorch.org/whl/cu118",
+        "3. Verify GPU: nvidia-smi"
+      ]
+    }
+  ]
+}

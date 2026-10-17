@@ -1,0 +1,5 @@
+data = open('compare_policies.py', 'rb').read()
+data = data.replace(b'\x97', b'--')
+data = data.replace(b'\xd7', b'x')
+open('compare_policies.py', 'wb').write(data)
+print('Encoding fixed. Bytes written:', len(data))

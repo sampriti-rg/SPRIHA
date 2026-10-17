@@ -1,0 +1,147 @@
+Overall Idea of the Paper
+The document talks about a smart way to store (cache) services in edge computing networks using AI (rein-forcement learning).
+Goal:Make better decisions on what services to store and where to maximize long term profit
+
+ What is the System? 
+There is a hierarchical network:
+Cloud (central server) → has everything
+Edge nodes (near users) → limited storage
+
+When a user requests a service:
+First checked at the edge node based on the node id if the node  contains the service
+If not available → forwarded to higher-level node or cloud
+If available, request is enqueued and than based on early deadline first algorithm request is picked for execution
+
+What is Being Managed? (Services & Caching)
+Each service has properties like:
+o	Size (how much memory it needs)
+o	Popularity (how often users request it)
+o	Importance (critical vs non-critical)
+o	Revenue (value generated when used)
+Each edge node:
+o	Has limited cache capacity
+o	Must choose which services to store
+
+3. Two Types of Operations in the System
+    Fast Process (Real-time request handling)
+•	Requests come continuously
+•	System immediately: 
+o	Checks for the service availability enqueue request if service is available and later picks for execu-tion based on the deadline associated with the request
+o	Otherwise forwards it
+
+       Slow Process (Decision making)
+•	Periodically, an AI agent DDQN
+o	Reviews system performance
+o	Decides: 
+	Which services to keep
+	Which to remove
+	Which to add
+This separation helps manage complexity. AI agent should not decide request schedule or execution and only do service provisioning
+
+What Factors Affect Performance?
+The system tries to maximize profit, which depends on:
+
+ Revenue (Good) Earned when: Request is successfully completed on time
+
+Costs (Bad)
+1.	Forwarding Cost
+o	If service is not available locally → request travels → increases delay and cost
+2.	SLA Penalty
+o	If request misses deadline → penalty (service quality issue) based on service criticaliy
+3.	Placement Cost
+o	Cost to move/add services into edge nodes
+
+Final goal:
+Choose services such that benefits > all these costs
+
+How Requests Are Handled
+When a request arrives:
+Case 1: Cache Hit
+•	Service is available locally
+•	Request served immediately ✅
+•	Best case
+
+ Case 2: Cache Miss (but available nearby)
+•	Service not local
+•	Request forwarded to: 
+o	Parent node OR peer node
+•	Slight delay cost is added to the deadline based on the latency
+ 
+Case 3: Multi-level Miss
+•	Service not available nearby
+•	Goes all the way to cloud
+•	High delay + possible failure
+
+System tries to maximize cache hits and minimize misses.
+
+ Why Use Reinforcement Learning (AI)?
+Real-world challenges:
+•	User demand keeps changing
+•	Popular services today may not be popular tomorrow
+•	Fixed rules won’t work
+ Solution: Use Reinforcement Learning (RL):
+•	The system learns from experience
+•	Improves decisions over time
+
+ What Does the AI Agent Do?
+At regular intervals:
+1.	Observes: 
+o	Which services are used more , How many request are forwarded , How many request crosses deadline ,What is the placement cost
+o	What is the cache utilzation
+o	Cache usage
+2.	Takes action: 
+o	Add a service
+o	Remove a service
+o	Keep as is
+3.	Gets feedback: 
+o	Did performance improve?
+👉 Over time, it learns:
+“What should I cache and where?”
+
+Key Inputs for Decision (State Information)
+The AI looks at:
+•	Cache hit/miss counts
+•	Forwarded requests
+•	Deadline violations
+•	Storage usage
+•	Service popularity
+These represent the current health of the system
+
+Actions the System Can Take
+For any service and node:
+•	Insert → add service to cache
+•	Delete → remove service
+•	Keep → no change
+
+ Objective of AI
+The AI tries to:
+•	Maximize long-term benefit, not just immediate gain
+ Example:
+•	It may accept a short-term cost (moving a service)
+•	If it leads to long-term improvement (more requests served locally)
+
+ What is DDQN (Advanced RL Technique)?
+The paper uses a specific method called: Double Deep Q-Network (DDQN)
+In simple terms:
+•	Uses a neural network to predict best actions
+•	Avoids overly optimistic decisions
+•	Learns stable and reliable policies
+
+How Learning Happens
+Repeated cycle:
+1.	Observe system
+2.	Take an action
+3.	Measure result (profit/loss)
+4.	Store experience
+5.	Learn from past experiences
+Over time:
+•	The system becomes smarter
+•	Makes better caching decisions
+
+ Key Advantages of This Approach
+ Faster response time
+ Less dependency on cloud
+ Reduced network traffic
+ Fewer deadline violations
+ Adaptive to changing user behavior
+

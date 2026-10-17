@@ -1,0 +1,52 @@
+service_id,name,size,popularity,criticality,revenue,init_cpu_cycles,description
+0,LiveVideo_4K,2800,0.94,mission_critical,9.80,7200000,4K ultra-HD live video streaming - adaptive bitrate encoding at edge; strict 20ms playout deadline
+1,LiveVideo_HD,1800,0.91,mission_critical,9.50,6800000,HD 1080p live video streaming - most popular tier; dominant traffic volume at leaf nodes
+2,VideoOnDemand_HD,950,0.87,high,7.20,1800000,Pre-encoded HD video-on-demand delivery; moderate deadline tolerance up to 150ms
+3,VideoOnDemand_SD,450,0.83,high,6.10,1400000,SD 720p video-on-demand; broad device compatibility; lower revenue per stream
+4,ShortFormVideo,120,0.89,high,5.80,320000,Short-clip social video (15-60s); extremely high request volume; small object size
+5,VoIP_Enterprise,12,0.72,mission_critical,9.20,95000,Enterprise voice-over-IP; strict 40ms one-way latency SLA; low compute per call
+6,VoIP_Consumer,10,0.65,mission_critical,8.90,88000,Consumer VoIP and video-call signalling; similar SLA to enterprise but lower revenue tier
+7,VideoConference_HD,380,0.58,mission_critical,9.10,1600000,HD multi-party video conferencing; real-time encode/decode; very tight deadline
+8,AR_Rendering,720,0.41,mission_critical,9.70,4800000,Augmented-reality scene rendering offloaded from headset; 10ms deadline; GPU-heavy init
+9,IoT_SensorIngest,8,0.77,mission_critical,8.60,62000,Real-time industrial IoT sensor data ingest and anomaly detection; high request rate
+10,IoT_AssetTracking,6,0.69,standard,4.40,55000,GPS and RFID asset tracking aggregation; periodic bursts; relaxed deadline 200ms
+11,IndustrialControl,5,0.52,mission_critical,9.40,78000,PLC and SCADA command relay for factory floor automation; 5ms hard deadline
+12,SmartGrid_Monitor,7,0.48,high,7.80,71000,Power grid telemetry and fault detection; 50ms deadline; low storage footprint
+13,EdgeAI_ImageClass,280,0.63,high,6.80,4200000,CNN image classification inference (MobileNetV3); camera feed from edge devices
+14,EdgeAI_ObjectDetect,620,0.55,high,7.40,5600000,YOLO-based real-time object detection; larger model; higher compute and storage
+15,EdgeAI_NLP,210,0.38,high,6.20,3800000,Lightweight NLP inference for on-device text classification and intent detection
+16,PredictiveMaint,190,0.44,high,7.60,2900000,Vibration and temperature time-series ML model for predictive maintenance alerts
+17,WebCaching_Static,45,0.82,standard,3.60,18000,Static web asset caching (JS / CSS / images); very high hit rate; negligible compute
+18,WebCaching_Dynamic,35,0.74,standard,4.20,32000,Dynamic page fragment caching with short TTL; moderate compute for cache invalidation
+19,CDN_SoftwareUpdate,3200,0.31,best_effort,2.10,1200000,OS and application software update distribution; large objects; best-effort delivery
+20,FileSync_Enterprise,80,0.53,standard,4.00,41000,Enterprise cloud file synchronisation (delta-sync); bursty traffic pattern
+21,DatabaseQuery_Cache,55,0.66,standard,5.10,48000,Distributed database query result cache; read-heavy workload; 100ms deadline
+22,EmailGateway,40,0.42,standard,3.30,35000,Corporate email SMTP/IMAP gateway with attachment caching; relaxed latency
+23,DNS_Resolver,2,0.88,standard,3.10,12000,Edge DNS resolution and caching; extremely high request rate; tiny compute footprint
+24,AuthService,15,0.71,high,6.60,58000,OAuth2 / JWT authentication and token validation service; 30ms deadline for UX
+25,APIGateway,25,0.76,high,5.90,44000,RESTful API gateway with rate limiting and request routing; moderate compute
+26,BackupService_Cold,4500,0.19,best_effort,1.20,1100000,Cold backup to object storage; large transfers; no latency requirement
+27,BackupService_Warm,850,0.24,best_effort,1.80,850000,Warm backup with daily incremental sync; medium object size; best-effort SLA
+28,LogAggregation,30,0.57,best_effort,2.40,27000,Application and system log collection and compression; bursty; best-effort
+29,TelemetryPipeline,20,0.61,standard,4.60,39000,Metrics and distributed-tracing telemetry pipeline; 200ms deadline; moderate volume
+30,LiveAuction_Stream,420,0.79,mission_critical,9.30,2100000,Real-time live auction video + bid feed; strict 30ms synchronisation deadline
+31,EmergencyDispatch,4,0.45,mission_critical,9.90,83000,Emergency-services CAD dispatch relay; hardest latency SLA in catalogue; 3ms deadline
+32,V2X_Safety,3,0.67,mission_critical,9.60,74000,Vehicle-to-everything safety message broadcast; cooperative collision avoidance; 5ms deadline
+33,DroneControl,9,0.36,mission_critical,9.50,91000,UAV command-and-control uplink; real-time telemetry and waypoint updates; 8ms deadline
+34,RoboticArm_Control,6,0.40,mission_critical,9.40,86000,Factory robotic-arm motion control relay; deterministic 4ms cycle time required
+35,SmartCamera_Analytics,310,0.71,high,7.10,3600000,On-edge smart-camera video analytics pipeline for retail footfall and queue detection
+36,FaceRecognition,260,0.49,high,8.10,4100000,Real-time face recognition inference for access control; 50ms deadline; privacy-sensitive
+37,LicensePlateRecog,95,0.54,high,7.50,2200000,ANPR license-plate recognition for toll and parking; 100ms deadline; compact model
+38,SpeechToText,180,0.62,high,6.90,3300000,On-device ASR transcription offload; 200ms deadline; moderate model size
+39,TranslationService,240,0.46,standard,5.50,2700000,Neural machine translation inference; 300ms deadline; bursty enterprise usage
+40,MapTileCache,60,0.85,standard,3.90,22000,Vector and raster map-tile cache for navigation apps; very high hit rate; tiny compute
+41,WeatherFeed,5,0.73,standard,3.20,15000,Hyperlocal weather data aggregation and caching; periodic refresh; low compute
+42,StockTicker,3,0.68,high,5.70,19000,Real-time financial market data feed normalisation and caching; 10ms deadline
+43,GameStateSync,18,0.77,high,6.30,51000,Multiplayer game-state synchronisation server; 20ms round-trip budget; bursty
+44,XR_AssetStream,1600,0.43,high,7.90,5200000,Extended-reality 3D asset streaming and LOD selection; large objects; 50ms deadline
+45,HealthMonitor_ICU,7,0.50,mission_critical,9.80,69000,ICU patient vital-signs telemetry; hard 10ms deadline; zero-drop SLA
+46,MedicalImaging_AI,2200,0.34,high,8.40,6100000,DICOM medical image AI inference (radiology assist); large model; 500ms deadline
+47,PrivateBlockchain,340,0.28,standard,5.20,1950000,Enterprise private blockchain transaction validation node; moderate compute; 200ms
+48,FirmwareUpdate_OTA,580,0.22,best_effort,1.60,920000,Over-the-air firmware update distribution for IoT devices; large delta patches; best-effort
+49,AdTargeting,22,0.80,standard,4.80,37000,Real-time programmatic ad-targeting inference at edge; 15ms bid-response deadline
+

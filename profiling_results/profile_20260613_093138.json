@@ -1,0 +1,57 @@
+{
+  "timestamp": "20260613_093138",
+  "summary": {
+    "total_time_s": 3.1337357000011252,
+    "avg_episode_time_s": 3.1337357000011252,
+    "gpu_available": true
+  },
+  "timing_stats": {
+    "request_generation": {
+      "count": 1,
+      "total_ms": 48.30789999687113,
+      "mean_ms": 48.30789999687113,
+      "min_ms": 48.30789999687113,
+      "max_ms": 48.30789999687113
+    },
+    "total_routing": {
+      "count": 1,
+      "total_ms": 147.3443003342254,
+      "mean_ms": 147.3443003342254,
+      "min_ms": 147.3443003342254,
+      "max_ms": 147.3443003342254
+    },
+    "total_provisioning": {
+      "count": 1,
+      "total_ms": 2931.949799953145,
+      "mean_ms": 2931.949799953145,
+      "min_ms": 2931.949799953145,
+      "max_ms": 2931.949799953145
+    },
+    "avg_routing_per_request": {
+      "count": 1,
+      "total_ms": 0.02946886006684508,
+      "mean_ms": 0.02946886006684508,
+      "min_ms": 0.02946886006684508,
+      "max_ms": 0.02946886006684508
+    },
+    "avg_provisioning_call": {
+      "count": 1,
+      "total_ms": 58.6389959990629,
+      "mean_ms": 58.6389959990629,
+      "min_ms": 58.6389959990629,
+      "max_ms": 58.6389959990629
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "component": "Provisioning (DDQN)",
+      "issue": "Takes 2.93s total",
+      "solutions": [
+        "1. Use agent.select_actions_batch() for vectorized action selection",
+        "2. Increase PROVISIONING_INTERVAL to reduce frequency",
+        "3. Reduce state vector computation overhead"
+      ]
+    }
+  ]
+}
